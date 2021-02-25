@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
+import Logo  from '../../images/Logo/Logo.png'; 
 import { animateScroll as scroll } from 'react-scroll';
-import { Nav, NavContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink } from './NavbarElements';
+import { Nav, NavContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink, Img } from './NavbarElements';
 
 const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
 
@@ -29,7 +30,7 @@ const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
         <Nav scrollNav={scrollNav}>
             <NavContainer>
                 <NavLogo to="/">
-                    berich
+                    <Img src={Logo} alt="BeRich" />
                 </NavLogo>
                 <MobileIcon onClick={sideBarToggle}>
                     <FaBars />

@@ -7,7 +7,6 @@ import Routes from './components/Routing';
 const App = () => {
     return (
         <Router>
-            <Navbar />
             <Routes />
         </Router>
     );

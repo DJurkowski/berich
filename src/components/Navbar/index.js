@@ -27,9 +27,9 @@ const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
     };
 
     return (
-        <Nav scrollNav={scrollNav}>
+        <Nav scrollNav={scrollNav} isHomePage={isHomePage}>
             <NavContainer>
-                <NavLogo to="/">
+                <NavLogo to="/" onClick={homeToggle}>
                     <Img src={Logo} alt="BeRich" />
                 </NavLogo>
                 <MobileIcon onClick={sideBarToggle}>

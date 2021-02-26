@@ -3,10 +3,10 @@ import { Link as LinkR } from 'react-router-dom';
 import { Link as LinkS } from 'react-scroll';
 
 export const Nav = styled.nav`
-    /* background: ${({scrollNav}) => (scrollNav ? '#000' : 'transparent')}; */
-    background: #0d0d0d;
+    background: ${({scrollNav, isHomePage}) => (isHomePage ? (scrollNav ? '#0d0d0d' : 'transparent'): '#0d0d0d' )};
+    /* background: #0d0d0d; */
     height: 80px;
-    /* margin-top: -80px; */
+    margin-top: ${({isHomePage}) => (isHomePage ? '-80px' : '0')};
     display: flex;
     justify-content: center;
     align-items: center;

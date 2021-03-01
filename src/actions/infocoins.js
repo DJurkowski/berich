@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_INFO_COINS, INFO_COINS_ERROR } from './types';
+import { GET_INFO_COINS, INFO_COINS_ERROR, GET_COIN_MARKET_PRICES } from './types';
 
 export const getCoins = () => async dispatch => {
     try {
@@ -9,9 +9,29 @@ export const getCoins = () => async dispatch => {
         dispatch({
             type: GET_INFO_COINS,
             payload: res.data
-        })
+        });
 
     } catch (err) {
         console.log(err);
+    }
+};
+
+export const getCoinMarketPrices = (ids) => async dispatch => {
+    try {
+        const promises = [];
+
+        for(const id of ids) {
+            let res = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=1`);
+            promises.push({name: id, prices: res.data.prices.map(price => price[1])});
+        }
+
+        dispatch({
+            type: GET_COIN_MARKET_PRICES,
+            payload: promises
+        });
+
+    } catch (err) {
+        console.log(err);
+        
     }
 };

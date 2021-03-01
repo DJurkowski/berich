@@ -12,8 +12,9 @@ const Coin = ({ coin }) => {
             
             <CoinPrice>${coin.current_price}</CoinPrice>
             <CoinPriceChange price={coin.price_change_percentage_24h}>{coin.price_change_percentage_24h.toFixed(2)}%</CoinPriceChange>
-            
-            <Chart coin={coin} />
+            <CoinChart>
+                <Chart coin={coin} />
+            </CoinChart>
         </CoinContainer>
         </>
     );

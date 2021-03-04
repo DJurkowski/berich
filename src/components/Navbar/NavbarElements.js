@@ -4,7 +4,6 @@ import { Link as LinkS } from 'react-scroll';
 
 export const Nav = styled.nav`
     background: ${({scrollNav, isHomePage}) => (isHomePage ? (scrollNav ? '#0d0d0d' : 'transparent'): '#0d0d0d' )};
-    /* background: #0d0d0d; */
     height: 80px;
     margin-top: ${({isHomePage}) => (isHomePage ? '-80px' : '0')};
     display: flex;

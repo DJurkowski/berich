@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../Button/ButtonElements';
-import { AboutContainer, AboutWrapper, AboutRow, Column1, Column2, TextWrapper, TopLine, Heading, Subtitle, BtnWrap, ImgWrap, Img} from './AboutSectionElements';
+import { AboutContainer, AboutWrapper, AboutRow, Column1, Column2, TextWrapper, TopLine, Heading, Subtitle, BtnWrap, ImgWrap, Img} from './UniversalSectionElements';
 
 const AboutSection = (props) => {
 

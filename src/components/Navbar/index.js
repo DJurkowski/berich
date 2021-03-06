@@ -53,7 +53,7 @@ const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
                     </NavItem>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to={isHomePage ? "hireme": "/"}>Hire Me</NavBtnLink>
+                    <NavBtnLink to={isHomePage ? "hireme": "/"} smooth={true} duration={500} spy={true} exact='true' offset={-80}>Hire Me</NavBtnLink>
                 </NavBtn>
             </NavContainer>
         </Nav>

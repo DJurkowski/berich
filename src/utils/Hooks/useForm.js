@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import emailjs from 'emailjs-com';
 
 const useForm = (validateForm, submitForm) => {
     const [ values, setValues ] = useState({
@@ -26,8 +27,16 @@ const useForm = (validateForm, submitForm) => {
     }
 
     useEffect(() => {
+
         if(Object.keys(errors).length === 0 && isSubmitting) {
             submitForm();
+           
+            emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID , values, process.env.REACT_APP_EMAIL_USER_ID)
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
         }
     }, [errors]);
 

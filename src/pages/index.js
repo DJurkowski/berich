@@ -5,6 +5,7 @@ import HeroSection from '../components/HeroSection';
 import UniversalSection from '../components/UniversalSection';
 import { aboutSection, cryptoSection } from '../utils/Data/Data';
 import Services from '../components/Services';
+import HireMeSection from '../components/HireMeSection';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
             <UniversalSection {...aboutSection} />
             <UniversalSection {...cryptoSection} />
             <Services />
+            <HireMeSection />
             <Footer isHomePage={true} />
         </>
     );

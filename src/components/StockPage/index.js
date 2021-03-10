@@ -3,27 +3,35 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Table from './Table';
 import { getStock } from '../../actions/stock';
-import { StockContainer, StockH1 } from './StockElements';
+import { StockContainer, StockH1, ToggleWrappper, ToggleLabel } from './StockElements';
+import Toggle from '../Toggle';
 
 const StockPage = ({ getStock, stock: { coins, loading }}) => {
 
     const [ coinsPerPage, setCoinsPerPage ] = useState(50);
     const [ pageNumber, setPageNumber ] = useState(1);
-    const [ isDarkBg, setIsDarkBg ] = useState(true);
+    const [ isDarkBg, setIsDarkBg ] = useState(false);
 
     useEffect(() => {
         getStock(coinsPerPage, pageNumber);
     }, [coinsPerPage, pageNumber])
 
     useEffect(() => {
-        console.log("HEllo Frined");
     }, [loading]);
+
+    const handleToggle = () => {
+        setIsDarkBg(!isDarkBg);
+    };
 
     return (
         <StockContainer dark={isDarkBg}>
+            <ToggleWrappper>
+                <ToggleLabel>{isDarkBg ? 'Dark' : 'Light'} Mode</ToggleLabel>
+                <Toggle action={handleToggle} />
+            </ToggleWrappper>
             <StockH1>Stock</StockH1>
             {!loading && 
-                <Table coins={coins} />
+                <Table coins={coins} isDarkBg={isDarkBg}/>
             }
         </StockContainer>
     );

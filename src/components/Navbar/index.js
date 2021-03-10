@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
 import Logo  from '../../images/Logo/Logo.png'; 
 import { animateScroll as scroll } from 'react-scroll';
-import { Nav, NavContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink, Img } from './NavbarElements';
+import { Nav, NavContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavRoute, NavBtn, NavBtnLink, Img } from './NavbarElements';
 
 const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
 
@@ -49,7 +49,7 @@ const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
                         <NavLinks to={isHomePage ? "more": "/"} smooth={true} duration={500} spy={true} exact='true' offset={-80}>More</NavLinks>
                     </NavItem>
                     <NavItem>
-                        <NavLinks to="/stock" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Stock</NavLinks>
+                        <NavRoute to="/stock">Stock</NavRoute>
                     </NavItem>
                 </NavMenu>
                 <NavBtn>

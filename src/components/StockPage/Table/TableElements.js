@@ -7,7 +7,9 @@ export const TableCointainer = styled.table`
     padding: 0 40px;
 `;
 
-export const TableHeader = styled.thead``;
+export const TableHeader = styled.thead`
+    color: ${({isDarkBg}) => (isDarkBg ? '#fff' : '#000')};
+`;
 
 export const TableTHContainer = styled.tr``;
 
@@ -18,7 +20,6 @@ export const TableBody = styled.tbody`
 export const TableTH = styled.th`
     padding-top: 12px;
     padding-bottom: 12px;
-    color: white;
     text-align: center;
 
     @media screen and (max-width: 530px) {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { CoinContainer, CoinImg, CoinName, CoinSymbol, CoinPrice, CoinVolume, CoinPercent, CoinMarketCap, CoinImageWrap } from './CoinElements';
 
-const Coin = ({ img, name, symbol, price, volume, priceChange, marketCap }) => {
+const Coin = ({ img, name, symbol, price, volume, priceChange, marketCap, isDarkBg }) => {
 
     return (
-        <CoinContainer>
+        <CoinContainer isDarkBg={isDarkBg}>
             
             <CoinImageWrap>
                 <CoinImg src={img} alt={name}/>

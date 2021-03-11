@@ -1,8 +1,4 @@
 import styled from 'styled-components';
-import Sun from '../../images/Icons/sun.svg';
-import Moon from '../../images/Icons/moon.svg';
-
-// import { FaSun, FaMoon } from 'react-icons/fa';
 
 export const ToggleContainer = styled.label`
     position: relative;

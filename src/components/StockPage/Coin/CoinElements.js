@@ -4,13 +4,14 @@ export const CoinContainer = styled.tr`
     padding: 12px 0;
     height: 80px;
     margin: 0;
+    cursor: pointer;
 
     &:nth-child(odd) {
-        background-color: #1a1a1a;
+        background-color: ${({isDarkBg}) => (isDarkBg ? '#1a1a1a' : '#e3e3e3')};
     }
 
     &:hover {
-        background: rgba(6, 222, 156, 0.2); 
+        background: ${({isDarkBg}) => (isDarkBg ? 'rgba(6, 222, 156, 0.3)' : 'rgba(6, 222, 156, 0.4)')} ; 
     }
 `;
 

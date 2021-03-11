@@ -18,7 +18,7 @@ const Coin = ({ img, name, symbol, price, volume, priceChange, marketCap, isDark
             
             <CoinVolume>{volume.toLocaleString()}</CoinVolume>
             
-            <CoinPercent price={priceChange}>{priceChange.toFixed(2)}%</CoinPercent>
+            <CoinPercent price={priceChange}>{priceChange ? `${priceChange.toFixed(2)}%` : 'no data'}</CoinPercent>
             
             <CoinMarketCap>{marketCap.toLocaleString()}</CoinMarketCap>
         </CoinContainer>

@@ -31,3 +31,13 @@ export const ToggleLabel = styled.div`
     display: inline-block;
     margin-right: 10px;
 `;
+
+export const SelectsWrapper = styled.div`
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 60px 40px 0 0;
+    position: relative;
+`;

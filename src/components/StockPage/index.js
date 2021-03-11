@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Table from './Table';
 import { getStock } from '../../actions/stock';
-import { StockContainer, StockH1, ToggleWrappper, ToggleLabel } from './StockElements';
+import { StockContainer, StockH1, ToggleWrappper, ToggleLabel, SelectsWrapper, SelectLable } from './StockElements';
 import Toggle from '../Toggle';
+import Select from '../Select';
 
 const StockPage = ({ getStock, stock: { coins, loading }}) => {
 
@@ -30,6 +31,9 @@ const StockPage = ({ getStock, stock: { coins, loading }}) => {
                 <Toggle action={handleToggle} />
             </ToggleWrappper>
             <StockH1>Stock</StockH1>
+            <SelectsWrapper>
+                <Select selectedOption={coinsPerPage} setSelectedOption={setCoinsPerPage} options={['10', '20', '30', '50', '100', '200']} dark={isDarkBg} label="Coins per page:" />
+                </SelectsWrapper>
             {!loading && 
                 <Table coins={coins} isDarkBg={isDarkBg}/>
             }

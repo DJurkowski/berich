@@ -4,7 +4,7 @@ export const StockContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 80px;
     background-color: ${({dark}) => (dark ? '#010606' : '#f9f9f9')};
     color: ${({dark}) => (dark ? '#fff' : '#010606')};
     min-height: 100vh;

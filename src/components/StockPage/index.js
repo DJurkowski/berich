@@ -7,12 +7,17 @@ import { StockContainer, StockH1, ToggleWrappper, ToggleLabel, SelectsWrapper, S
 import Toggle from '../Toggle';
 import Select from '../Select';
 import Pagination from '../Pagination';
+import Navbar from '../Navbar';
 
 const StockPage = ({ getStock, stock: { coins, loading }}) => {
 
     const [ coinsPerPage, setCoinsPerPage ] = useState(50);
     const [ pageNumber, setPageNumber ] = useState(1);
     const [ isDarkBg, setIsDarkBg ] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     useEffect(() => {
         getStock(coinsPerPage, pageNumber);
@@ -32,23 +37,23 @@ const StockPage = ({ getStock, stock: { coins, loading }}) => {
     }
 
     return (
-        <StockContainer dark={isDarkBg}>
-            <ToggleWrappper>
-                <ToggleLabel>{isDarkBg ? 'Dark' : 'Light'} Mode</ToggleLabel>
-                <Toggle action={handleToggle} />
-            </ToggleWrappper>
-            <StockH1>Stock</StockH1>
-            
-            <SelectsWrapper>
-                <Select selectedOption={coinsPerPage} setSelectedOption={handleCoinsPerPage} options={['10', '20', '30', '50', '100', '200']} dark={isDarkBg} label="Coins per page:" />
-                </SelectsWrapper>
-            {!loading && 
-                <>
-                    <Table coins={coins} isDarkBg={isDarkBg}/>
-                    <Pagination action={setPageNumber} currentPage={pageNumber} dark={isDarkBg} />
-                </>
-            }
-        </StockContainer>
+            <StockContainer dark={isDarkBg}>
+                <ToggleWrappper>
+                    <ToggleLabel>{isDarkBg ? 'Dark' : 'Light'} Mode</ToggleLabel>
+                    <Toggle action={handleToggle} />
+                </ToggleWrappper>
+                <StockH1>Stock</StockH1>
+                
+                <SelectsWrapper>
+                    <Select selectedOption={coinsPerPage} setSelectedOption={handleCoinsPerPage} options={['10', '20', '30', '50', '100', '200']} dark={isDarkBg} label="Coins per page:" />
+                    </SelectsWrapper>
+                {!loading && 
+                    <>
+                        <Table coins={coins} isDarkBg={isDarkBg}/>
+                        <Pagination action={setPageNumber} currentPage={pageNumber} dark={isDarkBg} />
+                    </>
+                }
+            </StockContainer>
     );
 };
 

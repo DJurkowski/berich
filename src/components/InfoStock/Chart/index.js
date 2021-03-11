@@ -12,7 +12,6 @@ const ApexChart = ({coinsmarket: { prices, loading }, coin}) => {
         if(!loading && prices) {
             prices.map(price => { 
                 if(price.name === coin.id) {
-                    console.log(price.name);
                     setState({
                         series: [{
                             name: coin.name,

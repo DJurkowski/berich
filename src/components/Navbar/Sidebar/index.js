@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../../../utils/Context/Context';
 
-import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SideBtnWrap, SidebarRoute } from './SidebarElements';
+import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarMenu, SidebarLink, SideBtnWrap, SidebarBtnLink, SidebarBtnRoute, SidebarRouteLink } from './SidebarElements';
 
-const Sidebar = ({toggle, isOpen, isHomePage}) => {
+const Sidebar = ({toggle, isOpen, isHomePage=false}) => {
+
+    const [context, setContext] = useContext(Context);
+    
     return (
         <SidebarContainer isOpen={isOpen} onClick={toggle}>
             <Icon>
@@ -10,14 +14,36 @@ const Sidebar = ({toggle, isOpen, isHomePage}) => {
             </Icon>
             <SidebarWrapper>
                 <SidebarMenu>
-                    <SidebarLink to={isHomePage ? "about" : "/"} onClick={toggle}>About</SidebarLink>
-                    <SidebarLink to={isHomePage ? "crypto" : "/"} onClick={toggle}>Crypto</SidebarLink>
-                    <SidebarLink to={isHomePage ? "knowhow" : "/"} onClick={toggle}>KnowHow</SidebarLink>
-                    <SidebarLink to={isHomePage ? "more" : "/"} onClick={toggle}>More</SidebarLink>
-                    <SidebarLink to={isHomePage ? "stock" : "/"} onClick={toggle}>Stock</SidebarLink>
+                    {isHomePage ?
+                        <SidebarLink to="about" onClick={toggle}>About</SidebarLink>
+                    :
+                        <SidebarRouteLink to="/" onClick={() => setContext('about')}>About</SidebarRouteLink>
+                    }
+                    {isHomePage ?
+                        <SidebarLink to="crypto" onClick={toggle}>Crypto</SidebarLink>
+                    :
+                        <SidebarRouteLink to="/" onClick={() => setContext('cryto')}>Crypto</SidebarRouteLink>
+                    }
+                    {isHomePage ?
+                        <SidebarLink to="knowhow" onClick={toggle}>KnowHow</SidebarLink>
+                    :
+                        <SidebarRouteLink to="/" onClick={() => setContext('knowhow')}>KnowHow</SidebarRouteLink>
+                    }
+                    {isHomePage ?
+                        <SidebarLink to="more" onClick={toggle}>More</SidebarLink>
+                    :
+                        <SidebarRouteLink to="/" onClick={() => setContext('more')}>More</SidebarRouteLink>
+                    }
+
+                    <SidebarRouteLink to="/stock" >Stock</SidebarRouteLink>
+                    
                 </SidebarMenu>
                     <SideBtnWrap>
-                        <SidebarRoute to={isHomePage ? "hire" : "/"} onClick={toggle}>Hire me</SidebarRoute>
+                        {isHomePage ?
+                            <SidebarBtnLink to="hireme" onClick={toggle}>Hire me</SidebarBtnLink>
+                        :
+                            <SidebarBtnRoute to="/" onClick={() => setContext('hireme')}>Hire me</SidebarBtnRoute>
+                        }
                     </SideBtnWrap>
             </SidebarWrapper>
         </SidebarContainer>

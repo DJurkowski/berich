@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Navbar/Sidebar';
 import StockPage from '../components/StockPage';
 
 const Stock = () => {
+
+    const [ isOpen, setIsOpen ] = useState(false);
+
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
-        <StockPage />
+        <>
+            <Navbar toggle={toggle} isStockPage={true}/>
+            <Sidebar isOpen={isOpen} toggle={toggle}/>
+            <StockPage />
+        </>
     );
 };
 

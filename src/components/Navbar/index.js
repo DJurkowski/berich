@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaBars } from 'react-icons/fa';
 import Logo  from '../../images/Logo/Logo.png'; 
-import { animateScroll as scroll } from 'react-scroll';
-import { Nav, NavContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavRoute, NavBtn, NavBtnLink, Img } from './NavbarElements';
+import { animateScroll as scroll, scroller } from 'react-scroll';
+import { Nav, NavContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavRoute, NavBtn, NavBtnLink, NavBtnRoute, Img } from './NavbarElements';
+import { Context } from '../../utils/Context/Context';
 
-const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
+const Navbar = ({isHomePage=false, toggle: sideBarToggle, isStockPage=false}) => {
 
     const [scrollNav, setScrollNav] = useState(false);
+    const [context, setContext] = useContext(Context);
 
     const changeNav = () => {
         if(window.scrollY >= 80) {
@@ -18,6 +20,15 @@ const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
 
     useEffect(() => {
         window.addEventListener('scroll', changeNav);
+
+        if(context !== '') {
+            scroller.scrollTo(`${context}`, {
+                duration: 500,
+                delay: 0,
+                smooth: true
+            });
+            setContext('');
+        }
 
         return () => window.removeEventListener('scroll', changeNav);
     }, []);
@@ -37,23 +48,43 @@ const Navbar = ({isHomePage, toggle: sideBarToggle}) => {
                 </MobileIcon>
                 <NavMenu>
                     <NavItem>
-                        <NavLinks to={isHomePage ? "about": "/"} smooth={true} duration={500} spy={true} exact='true' offset={-80}>About</NavLinks>
+                        {isHomePage ? 
+                            <NavLinks to="about" smooth={true} duration={500} spy={true} exact='true' offset={-80}>About</NavLinks>
+                            : 
+                            <NavRoute to="/" onClick={() => setContext('about')}>About</NavRoute>
+                        }
                     </NavItem>
                     <NavItem>
-                        <NavLinks to={isHomePage ? "crypto": "/"} smooth={true} duration={500} spy={true} exact='true' offset={-80}>Crypto</NavLinks>
+                        {isHomePage ? 
+                            <NavLinks to="crypto" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Crypto</NavLinks>
+                            : 
+                            <NavRoute to="/" onClick={() => setContext('crypto')}>Crypto</NavRoute>
+                        }
                     </NavItem>
                     <NavItem>
-                        <NavLinks to={isHomePage ? "knowhow": "/"} smooth={true} duration={500} spy={true} exact='true' offset={-80}>KnowHow</NavLinks>
+                        {isHomePage ? 
+                            <NavLinks to="knowhow" smooth={true} duration={500} spy={true} exact='true' offset={-80}>KnowHow</NavLinks>
+                            : 
+                            <NavRoute to="/" onClick={() => setContext('knowhow')}>KnowHow</NavRoute>
+                        }
                     </NavItem>
                     <NavItem>
-                        <NavLinks to={isHomePage ? "more": "/"} smooth={true} duration={500} spy={true} exact='true' offset={-80}>More</NavLinks>
+                        {isHomePage ? 
+                            <NavLinks to="more" smooth={true} duration={500} spy={true} exact='true' offset={-80}>More</NavLinks>
+                            : 
+                            <NavRoute to="/" onClick={() => setContext('more')}>More</NavRoute>
+                        }
                     </NavItem>
                     <NavItem>
-                        <NavRoute to="/stock">Stock</NavRoute>
+                        <NavRoute isStockPage={isStockPage} to="/stock">Stock</NavRoute>
                     </NavItem>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to={isHomePage ? "hireme": "/"} smooth={true} duration={500} spy={true} exact='true' offset={-80}>Hire Me</NavBtnLink>
+                    {isHomePage ?
+                        <NavBtnLink to="hireme" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Hire Me</NavBtnLink>
+                        :
+                        <NavBtnRoute to="/" onClick={() => setContext('hireme')}>Hire Me</NavBtnRoute>
+                    }
                 </NavBtn>
             </NavContainer>
         </Nav>

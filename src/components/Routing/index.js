@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../../pages/index';
 import Stock from '../../pages/stock';
+import { Context } from '../../utils/Context/Context';
 
 const Routes = () => {
+    const [ context, setContext ] = useState('');
     return (
-        <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/stock" component={Stock} />
-        </Switch>
+        <Context.Provider value={[context, setContext]}>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/stock" component={Stock} />
+            </Switch>
+        </Context.Provider>
     );
 };
 

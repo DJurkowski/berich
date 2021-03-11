@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Link as LinkR } from 'react-router-dom';
 import { Link as LinkS } from 'react-scroll';
 
+const activeClassName = "nav-item-active";
+
+
 export const Nav = styled.nav`
     background: ${({scrollNav, isHomePage}) => (isHomePage ? (scrollNav ? '#0d0d0d' : 'transparent'): '#0d0d0d' )};
     height: 80px;
@@ -101,6 +104,8 @@ export const NavRoute = styled(LinkR)`
     height: 100%;
     cursor: pointer;
 
+    border-bottom: ${({isStockPage}) => (isStockPage ? '3px solid #06DE9C': 'none')};
+
     &.active {
         border-bottom: 3px solid #06DE9C;
     }
@@ -116,6 +121,27 @@ export const NavBtn = styled.nav`
 `;
 
 export const NavBtnLink = styled(LinkS)`
+    border-radius: 50px;
+    background: #06DE9C;
+    white-space: nowrap;
+    padding: 10px 22px;
+    color: #010606;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+    }
+`;
+
+export const NavBtnRoute = styled(LinkR)`
     border-radius: 50px;
     background: #06DE9C;
     white-space: nowrap;

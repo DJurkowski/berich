@@ -71,8 +71,8 @@ export const FormLabel = styled.label`
 export const FormInput = styled.input`
     display: block;
     outline: none;
-    border-radius: 50px;
-    height: 45px;
+    border-radius: 15px;
+    height: 50px;
     width: 100%;
     border: none;
     color: #fff;
@@ -113,7 +113,7 @@ export const FormTextArea = styled.textarea`
     max-width: 500px;
     min-width: 500px;
     border-radius: 20px;
-    padding: 10px 15px;
+    padding: 15px 15px;
     outline: none;
     color: #fff;
 

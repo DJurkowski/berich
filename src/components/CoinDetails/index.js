@@ -5,6 +5,7 @@ import Toggle from '../Toggle';
 import { getDetails } from '../../actions/details';
 import { DetailsContainer, InfoBox, BoxWrapper, Img, Name, ItemContainer, ItemWrap, Rank, LinksWrapper, PriceBox, DetailsBox, ChartBox, LinkContaier, WebIcon, ClickIcon, ToggleWrappper, ToggleLabel, BoxWrapperEnd, PriceChange, PriceLabel, AnotherPriceLabel, ChangePrice, DetailsWrapper, DetailsLabel, DetailsValue, DetailsChange, InfoIcon, ProgressWrap, ProgressLabel } from './CointDetailsElements';
 import ProgressBar from '../ProgressBar';
+import MarketChart from './MarketChart';
 
 const CoinDetails = ({ getDetails, match, details: { details: coin, loading } }) => {
 
@@ -101,10 +102,11 @@ const CoinDetails = ({ getDetails, match, details: { details: coin, loading } })
                 </DetailsBox>
                 }
             </DetailsWrapper>
-            <ChartBox></ChartBox>
-
-            {match.params.id}
-            Hello Friend coin details
+            {coin.market_data && 
+            <ChartBox>
+                <MarketChart loading={loading} coin={coin} days={7} currency='usd'/>
+            </ChartBox>
+            }
         </DetailsContainer>
     );
 };

@@ -75,7 +75,10 @@ export const DetailsBox = styled(Box)`
     color: ${({dark}) => (dark ? '#fff' : '#000')};
 `;
 
-export const ChartBox = styled(Box)``;
+export const ChartBox = styled(Box)`
+ grid-column: 1 / 7;
+    width: 100%;
+`;
 
 export const BoxWrapper = styled.div`
     display: flex;

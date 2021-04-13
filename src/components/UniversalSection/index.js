@@ -36,7 +36,6 @@ const AboutSection = (props) => {
                     </Column2>
                 </AboutRow>
             </AboutWrapper>
-            
         </AboutContainer>
     );
 };

@@ -3,6 +3,7 @@ import { TiAttachment, TiInfo } from 'react-icons/ti';
 import { HiCursorClick } from 'react-icons/hi';
 
 export const DetailsContainer = styled.div`
+    min-height: 100vh;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 250px 1fr 1fr;
@@ -75,9 +76,20 @@ export const DetailsBox = styled(Box)`
     color: ${({dark}) => (dark ? '#fff' : '#000')};
 `;
 
+export const SelectWrap = styled(Box)`
+    grid-column: 1 / 7;
+    grid-column-start: 1;
+    justify-content: start;
+    position: relative;
+    height: 100px;
+    z-index: 4;
+`;
+
 export const ChartBox = styled(Box)`
- grid-column: 1 / 7;
-    width: 100%;
+    grid-column: 1 / 7;
+    z-index: 2;
+    /* max-height: 500px; */
+    /* width: 100%; */
 `;
 
 export const BoxWrapper = styled.div`

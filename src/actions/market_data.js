@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_COIN_MARKET_DATA, COIN_MARKET_DATA_ERROR } from './types';
+import { GET_COIN_MARKET_DATA, COIN_MARKET_DATA_ERROR, CLEAR_STATE_MARKET_DATA } from './types';
 
 export const getCoinMarketData = (id, currency='usd', days=7) => async dispatch => {
     try {
@@ -14,4 +14,13 @@ export const getCoinMarketData = (id, currency='usd', days=7) => async dispatch 
     } catch (err) {
         console.log(err);
     }
+};
+
+export const clearStateMarketData = () => async dispatch => {
+
+    try {
+        dispatch({
+            type: CLEAR_STATE_MARKET_DATA
+        });
+    } catch (err) {}
 };

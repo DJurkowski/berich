@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Toggle from '../Toggle';
 import { getDetails } from '../../actions/details';
-import { DetailsContainer, InfoBox, BoxWrapper, Img, Name, ItemContainer, ItemWrap, Rank, LinksWrapper, PriceBox, DetailsBox, ChartBox, LinkContaier, WebIcon, ClickIcon, ToggleWrappper, ToggleLabel, BoxWrapperEnd, PriceChange, PriceLabel, AnotherPriceLabel, ChangePrice, DetailsWrapper, DetailsLabel, DetailsValue, DetailsChange, InfoIcon, ProgressWrap, ProgressLabel } from './CointDetailsElements';
+import { DetailsContainer, InfoBox, BoxWrapper, Img, Name, ItemContainer, ItemWrap, Rank, LinksWrapper, PriceBox, DetailsBox, ChartBox, LinkContaier, WebIcon, ClickIcon, ToggleWrappper, ToggleLabel, BoxWrapperEnd, PriceChange, PriceLabel, AnotherPriceLabel, ChangePrice, DetailsWrapper, DetailsLabel, DetailsValue, DetailsChange, InfoIcon, ProgressWrap, ProgressLabel, SelectWrap } from './CointDetailsElements';
 import ProgressBar from '../ProgressBar';
 import MarketChart from './MarketChart';
+import Select from '../Select';
 
 const CoinDetails = ({ getDetails, match, details: { details: coin, loading } }) => {
 
     const [ isDarkBg, setIsDarkBg ] = useState(false);
+    const [ selectedDays, setSelectredDays ] = useState(7);
 
     useEffect(()=> {
         if(match.params.id) {
@@ -28,7 +30,6 @@ const CoinDetails = ({ getDetails, match, details: { details: coin, loading } })
                 <ToggleLabel>{isDarkBg ? 'Dark' : 'Light'} Mode</ToggleLabel>
                 <Toggle action={handleToggle} />
             </ToggleWrappper>
-            {console.log(coin)}
             <InfoBox>
                 <BoxWrapper>
                    {coin.image && <Img src={coin.image.large}/>} 
@@ -103,9 +104,14 @@ const CoinDetails = ({ getDetails, match, details: { details: coin, loading } })
                 }
             </DetailsWrapper>
             {coin.market_data && 
-            <ChartBox>
-                <MarketChart loading={loading} coin={coin} days={7} currency='usd'/>
-            </ChartBox>
+            <>
+                <SelectWrap>
+                    <Select selectedOption={selectedDays} setSelectedOption={setSelectredDays} options={['7', '14', '30', '60', '120', 'max']} dark={isDarkBg} label="Price from last days:" smallSize={true} leftSide={true} />
+                </SelectWrap>
+                <ChartBox>
+                    <MarketChart loading={loading} coin={coin} days={selectedDays} currency='usd' dark={isDarkBg}/>
+                </ChartBox>
+            </>
             }
         </DetailsContainer>
     );

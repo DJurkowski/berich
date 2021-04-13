@@ -4,7 +4,7 @@ import { AboutContainer, AboutWrapper, AboutRow, Column1, Column2, TextWrapper, 
 
 const AboutSection = (props) => {
 
-    const { id, lightBg, lightText, lightTextDesc, topLine, headline, description, buttonLabel, imgStart, img, alt, dark, dark2, primary, darkText } = props;
+    const { id, lightBg, lightText, topLine, headline, description, buttonLabel, imgStart, img, alt, dark, dark2, primary, darkText } = props;
 
     return (
         <AboutContainer lightBg={lightBg} id={id}>
@@ -16,7 +16,7 @@ const AboutSection = (props) => {
                             <Heading lightText={lightText}>{headline}</Heading>
                             <Subtitle darkText={darkText}>{description}</Subtitle>
                             <BtnWrap>
-                                <Button to="home"
+                                <Button to="stock"
                                 smooth="true"
                                 duration={500}
                                 spy="true"

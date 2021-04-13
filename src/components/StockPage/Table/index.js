@@ -20,6 +20,7 @@ const Table = ({ coins, isDarkBg }) => {
                 {coins.map( coin => 
                     <Coin
                         key={coin.id}
+                        id={coin.id}
                         img={coin.image}
                         name={coin.name}
                         symbol={coin.symbol}

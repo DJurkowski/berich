@@ -4,7 +4,7 @@ export const DropDownContainer = styled.div`
     width: 168px;
     margin: 0 auto;
     position: absolute;
-    right: 0;
+    ${({leftSide}) => (leftSide ? 'left: 20px' : 'right: 0')};
     bottom: 0;
 
     @media screen and (max-width: 540px) {
@@ -14,6 +14,7 @@ export const DropDownContainer = styled.div`
 
 export const SelectLabel = styled.h4`
     margin-bottom: 10px;
+    font-size: ${({size}) => (size ? '14px' : '16px')};
 
     @media screen and (max-width: 540px) {
         font-size: 14px;
@@ -25,7 +26,7 @@ export const DropDownHeader = styled.div`
     padding: 0.4em 2em 0.4em 1em;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
     font-weight: 500;
-    font-size: 19px;
+    font-size: ${({size}) => (size ? '15px' : '19px')};
     background-color: ${({dark}) => (dark ? '#f9f9f9' : '#010606')};
     color: ${({dark}) => (dark ? '#010606' : '#fff')};
     cursor: pointer;
@@ -48,7 +49,7 @@ export const DropDownList = styled.ul`
     box-sizing: border-box;
     background-color: ${({dark}) => (dark ? '#f9f9f9' : '#010606')};
     color: ${({dark}) => (dark ? '#010606' : '#fff')};
-    font-size: 19px;
+    font-size: ${({size}) => (size ? '15px' : '19px')};
     font-weight: 500;
     cursor: pointer;
 

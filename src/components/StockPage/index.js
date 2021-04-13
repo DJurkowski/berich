@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Table from './Table';
 import { getStock } from '../../actions/stock';
-import { StockContainer, StockH1, ToggleWrappper, ToggleLabel, SelectsWrapper, SelectLable } from './StockElements';
+import { StockContainer, StockH1, ToggleWrappper, ToggleLabel, SelectsWrapper, SpinnerWrapper, Spinner } from './StockElements';
 import Toggle from '../Toggle';
 import Select from '../Select';
 import Pagination from '../Pagination';
-import Navbar from '../Navbar';
+import Loading from '../../images/Spinner/spinner.gif';
 
 const StockPage = ({ getStock, stock: { coins, loading }}) => {
 
@@ -43,14 +43,16 @@ const StockPage = ({ getStock, stock: { coins, loading }}) => {
                     <Toggle action={handleToggle} />
                 </ToggleWrappper>
                 <StockH1>Stock</StockH1>
-                
-                <SelectsWrapper>
+                {loading ?
+                    <SpinnerWrapper>
+                       <Spinner src={Loading} alt="loading" />     
+                    </SpinnerWrapper>
+                :   <> 
+                    <SelectsWrapper>
                     <Select selectedOption={coinsPerPage} setSelectedOption={handleCoinsPerPage} options={['10', '20', '30', '50', '100', '200']} dark={isDarkBg} label="Coins per page:" />
                     </SelectsWrapper>
-                {!loading && 
-                    <>
-                        <Table coins={coins} isDarkBg={isDarkBg}/>
-                        <Pagination action={setPageNumber} currentPage={pageNumber} dark={isDarkBg} />
+                    <Table coins={coins} isDarkBg={isDarkBg}/>
+                    <Pagination action={setPageNumber} currentPage={pageNumber} dark={isDarkBg} />
                     </>
                 }
             </StockContainer>

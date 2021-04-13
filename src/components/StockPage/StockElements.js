@@ -41,3 +41,13 @@ export const SelectsWrapper = styled.div`
     margin: 60px 40px 0 0;
     position: relative;
 `;
+
+export const SpinnerWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Spinner = styled.img`
+    height: 150px;
+`;

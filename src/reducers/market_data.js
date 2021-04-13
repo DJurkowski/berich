@@ -1,5 +1,5 @@
 
-import { GET_COIN_MARKET_DATA, COIN_MARKET_DATA_ERROR } from '../actions/types';
+import { GET_COIN_MARKET_DATA, COIN_MARKET_DATA_ERROR, CLEAR_STATE_MARKET_DATA } from '../actions/types';
 
 const initialState = {
     market: {},
@@ -23,6 +23,10 @@ export default function(state = initialState, action) {
                 ...state,
                 error: payload,
                 loading: false
+            };
+        case CLEAR_STATE_MARKET_DATA:
+            return {
+                ...initialState
             };
         default: 
             return state;

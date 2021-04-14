@@ -27,7 +27,7 @@ const Home = () => {
             <Services />
             <MoreSection />
             <HireMeSection />
-            <Footer isHomePage={true} />
+            <Footer />
         </>
     );
 };

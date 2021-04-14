@@ -4,7 +4,7 @@ import { GET_COIN_DETAILS, COIN_DETAILS_ERROR } from '../actions/types';
 const initialState = {
     details: {},
     loading: true,
-    error: {}
+    error: false
 };
 
 export default function(state = initialState, action) {
@@ -16,12 +16,13 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 details: payload,
-                loading: false
+                loading: false,
+                error: false
             };
         case COIN_DETAILS_ERROR: 
             return {
                 ...state,
-                error: payload,
+                error: true,
                 loading: false
             };
         default: 

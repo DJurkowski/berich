@@ -12,7 +12,7 @@ const Notfound = () => {
 
     return (
         <>
-            <Navbar toggle={toggle} isStockPage={true}/>
+            <Navbar toggle={toggle} isstockpage={true}/>
             <Sidebar isOpen={isOpen} toggle={toggle}/>
             <NotFound />
         </>

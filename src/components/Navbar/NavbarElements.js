@@ -101,7 +101,7 @@ export const NavRoute = styled(LinkR)`
     height: 100%;
     cursor: pointer;
 
-    border-bottom: ${({isStockPage}) => (isStockPage ? '3px solid #06DE9C': 'none')};
+    border-bottom: ${({isstockpage}) => (isstockpage ? '3px solid #06DE9C': 'none')};
 
     &.active {
         border-bottom: 3px solid #06DE9C;

@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Toggle from '../Toggle';
 import { getDetails } from '../../actions/details';
-import { DetailsContainer, InfoBox, BoxWrapper, Img, Name, ItemContainer, ItemWrap, Rank, LinksWrapper, PriceBox, DetailsBox, ChartBox, LinkContaier, WebIcon, ClickIcon, ToggleWrappper, ToggleLabel, BoxWrapperEnd, PriceChange, PriceLabel, AnotherPriceLabel, ChangePrice, DetailsWrapper, DetailsLabel, DetailsValue, DetailsChange, InfoIcon, ProgressWrap, ProgressLabel, SelectWrap } from './CointDetailsElements';
+import { DetailsContainer, ErrorContainer, InfoBox, BoxWrapper, Img, Name, ItemContainer, ItemWrap, Rank, LinksWrapper, PriceBox, DetailsBox, ChartBox, LinkContaier, WebIcon, ClickIcon, ToggleWrappper, ToggleLabel, BoxWrapperEnd, PriceChange, PriceLabel, AnotherPriceLabel, ChangePrice, DetailsWrapper, DetailsLabel, DetailsValue, DetailsChange, InfoIcon, ProgressWrap, ProgressLabel, SelectWrap } from './CointDetailsElements';
 import ProgressBar from '../ProgressBar';
 import MarketChart from './MarketChart';
 import Select from '../Select';
+import Alert from '../Alert';
 
-const CoinDetails = ({ getDetails, match, details: { details: coin, loading } }) => {
+const CoinDetails = ({ getDetails, match, details: { details: coin, loading, error } }) => {
 
     const [ isDarkBg, setIsDarkBg ] = useState(false);
     const [ selectedDays, setSelectredDays ] = useState(7);
@@ -17,14 +18,15 @@ const CoinDetails = ({ getDetails, match, details: { details: coin, loading } })
         if(match.params.id) {
             getDetails(match.params.id);
         }
-    },[loading]);
+    },[loading, error]);
 
     const handleToggle = () => {
         setIsDarkBg(!isDarkBg);
     };
 
     return (
-        coin &&
+        error ? <Alert message="Back to stock" direction='/stock' /> 
+        : ( coin &&
         <DetailsContainer dark={isDarkBg}>
             <ToggleWrappper>
                 <ToggleLabel>{isDarkBg ? 'Dark' : 'Light'} Mode</ToggleLabel>
@@ -113,7 +115,7 @@ const CoinDetails = ({ getDetails, match, details: { details: coin, loading } })
                 </ChartBox>
             </>
             }
-        </DetailsContainer>
+        </DetailsContainer>)
     );
 };
 

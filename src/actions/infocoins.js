@@ -25,13 +25,14 @@ export const getCoinMarketPrices = (ids) => async dispatch => {
             promises.push({name: id, prices: res.data.prices.map(price => price[1])});
         }
 
-        dispatch({
-            type: GET_COIN_MARKET_PRICES,
-            payload: promises
+        Promise.all(promises).then((values) => {
+            dispatch({
+                type: GET_COIN_MARKET_PRICES,
+                payload: values
+            });
         });
 
     } catch (err) {
         console.log(err);
-        
     }
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import { Link as LinkS } from 'react-scroll';
 export const FooterContainer = styled.footer`
     background: #0d0d0d;
 `;
@@ -56,7 +56,20 @@ export const FooterLinkTitle = styled.h1`
     margin-bottom: 16px;
 `;
 
-export const FooterLink = styled(Link)`
+export const FooterLink = styled(LinkS)`
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+
+    &:hover {
+        color: #06DE9C;
+        transition: 0.3s ease-out;
+    }
+`;
+
+export const FooterLinkOut = styled.a`
     color: #fff;
     text-decoration: none;
     margin-bottom: 0.5rem;
@@ -98,9 +111,7 @@ export const SocialLogo = styled(Link)`
     font-weight: bold;
 `;
 
-export const SocialLogoImg = styled.img`
-
-`;
+export const SocialLogoImg = styled.img``;
 
 export const WebsiteRights = styled.small`
     color: #fff;

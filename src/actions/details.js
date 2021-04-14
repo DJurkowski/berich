@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { GET_COIN_DETAILS, COIN_DETAILS_ERROR } from './types';
 
 export const getDetails = (id) => async dispatch => {
@@ -13,6 +12,9 @@ export const getDetails = (id) => async dispatch => {
             payload: res.data
         });
     } catch (err) {
-        console.log(err);
+        
+        dispatch({
+            type: COIN_DETAILS_ERROR
+        });
     }
 };

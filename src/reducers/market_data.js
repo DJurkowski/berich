@@ -1,4 +1,3 @@
-
 import { GET_COIN_MARKET_DATA, COIN_MARKET_DATA_ERROR, CLEAR_STATE_MARKET_DATA } from '../actions/types';
 
 const initialState = {

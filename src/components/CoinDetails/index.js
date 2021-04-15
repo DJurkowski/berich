@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { ThemeContext } from '../../utils/Context/ThemeContext';
 import Toggle from '../Toggle';
 import { getDetails } from '../../actions/details';
-import { DetailsContainer, InfoBox, BoxWrapper, Img, Name, ItemContainer, ItemWrap, Rank, LinksWrapper, PriceBox, DetailsBox, ChartBox, LinkContaier, WebIcon, ClickIcon, ToggleWrappper, ToggleLabel, BoxWrapperEnd, PriceChange, PriceLabel, AnotherPriceLabel, ChangePrice, DetailsWrapper, DetailsLabel, DetailsValue, DetailsChange, InfoIcon, ProgressWrap, ProgressLabel, SelectWrap } from './CointDetailsElements';
+import { Button } from '../Button/ButtonElements';
+import { DetailsContainer, InfoBox, BoxWrapper, Img, Name, ItemContainer, ItemWrap, Rank, LinksWrapper, PriceBox, DetailsBox, ChartBox, LinkContaier, WebIcon, ClickIcon, ToggleWrappper, ButtonWrapper, ToggleLabel, BoxWrapperEnd, PriceChange, PriceLabel, AnotherPriceLabel, ChangePrice, DetailsWrapper, DetailsLabel, DetailsValue, DetailsChange, InfoIcon, ProgressWrap, ProgressLabel, SelectWrap } from './CointDetailsElements';
 import ProgressBar from '../ProgressBar';
 import MarketChart from './MarketChart';
 import Select from '../Select';
@@ -29,6 +30,9 @@ const CoinDetails = ({ getDetails, match, details: { details: coin, loading, err
         error ? <Alert message="Back to stock" direction='/stock' /> 
         : ( coin &&
         <DetailsContainer dark={isDarkTheme}>
+            <ButtonWrapper>
+                <Button to="/stock" primary={isDarkTheme ? true: false} dark={isDarkTheme ? true: false}>Back</Button>
+            </ButtonWrapper>
             <ToggleWrappper>
                 <ToggleLabel>{isDarkTheme ? 'Dark' : 'Light'} Mode</ToggleLabel>
                 <Toggle action={handleToggle} side={isDarkTheme} />

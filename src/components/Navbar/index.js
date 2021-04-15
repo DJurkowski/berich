@@ -5,7 +5,7 @@ import { animateScroll as scroll, scroller } from 'react-scroll';
 import { Nav, NavContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavRoute, NavBtn, NavBtnLink, NavBtnRoute, Img } from './NavbarElements';
 import { Context } from '../../utils/Context/Context';
 
-const Navbar = ({isHomePage=false, toggle: sideBarToggle, isstockpage=false}) => {
+const Navbar = ({isHomePage=false, toggle: sideBarToggle, isstockpage="false"}) => {
 
     const [scrollNav, setScrollNav] = useState(false);
     const [context, setContext] = useContext(Context);

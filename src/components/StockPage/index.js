@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Table from './Table';
@@ -8,12 +8,13 @@ import Toggle from '../Toggle';
 import Select from '../Select';
 import Pagination from '../Pagination';
 import Loading from '../../images/Spinner/spinner.gif';
+import { ThemeContext } from '../../utils/Context/ThemeContext';
 
 const StockPage = ({ getStock, stock: { coins, loading }}) => {
 
     const [ coinsPerPage, setCoinsPerPage ] = useState(50);
     const [ pageNumber, setPageNumber ] = useState(1);
-    const [ isDarkBg, setIsDarkBg ] = useState(false);
+    const [ isDarkTheme, setDarkTheme ] = useContext(ThemeContext);
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -28,7 +29,7 @@ const StockPage = ({ getStock, stock: { coins, loading }}) => {
     }, [loading]);
 
     const handleToggle = () => {
-        setIsDarkBg(!isDarkBg);
+        setDarkTheme(!isDarkTheme);
     };
 
     const handleCoinsPerPage = (value) => {
@@ -37,10 +38,10 @@ const StockPage = ({ getStock, stock: { coins, loading }}) => {
     }
 
     return (
-            <StockContainer dark={isDarkBg}>
+            <StockContainer dark={isDarkTheme}>
                 <ToggleWrappper>
-                    <ToggleLabel>{isDarkBg ? 'Dark' : 'Light'} Mode</ToggleLabel>
-                    <Toggle action={handleToggle} />
+                    <ToggleLabel>{isDarkTheme ? 'Dark' : 'Light'} Mode</ToggleLabel>
+                    <Toggle action={handleToggle} side={isDarkTheme} />
                 </ToggleWrappper>
                 <StockH1>Stock</StockH1>
                 {loading ?
@@ -49,10 +50,10 @@ const StockPage = ({ getStock, stock: { coins, loading }}) => {
                     </SpinnerWrapper>
                 :   <> 
                     <SelectsWrapper>
-                    <Select selectedOption={coinsPerPage} setSelectedOption={handleCoinsPerPage} options={['10', '20', '30', '50', '100', '200']} dark={isDarkBg} label="Coins per page:" />
+                    <Select selectedOption={coinsPerPage} setSelectedOption={handleCoinsPerPage} options={['10', '20', '30', '50', '100', '200']} dark={isDarkTheme} label="Coins per page:" />
                     </SelectsWrapper>
-                    <Table coins={coins} isDarkBg={isDarkBg}/>
-                    <Pagination action={setPageNumber} currentPage={pageNumber} dark={isDarkBg} />
+                    <Table coins={coins} isDarkBg={isDarkTheme}/>
+                    <Pagination action={setPageNumber} currentPage={pageNumber} dark={isDarkTheme} />
                     </>
                 }
             </StockContainer>

@@ -2,10 +2,10 @@ import React from 'react';
 
 import { ToggleContainer, ToggleInput, ToggleSlider } from './ToggleElements';
 
-const Toggle = ({ action }) => {
+const Toggle = ({ action, side }) => {
     return (
         <ToggleContainer>
-            <ToggleInput id="checkbox" type="checkbox"  onClick={action}/>
+            <ToggleInput id="checkbox" type="checkbox" onChange={action} checked={side} />
             <ToggleSlider htmlFor="checkbox" />
         </ToggleContainer>
     );

@@ -20,13 +20,13 @@ const Select = ({selectedOption, setSelectedOption, options, dark, label, smallS
 
     return (
         <DropDownContainer ref={ref} leftSide={leftSide}>
-            <SelectLabel size={smallSize}>{label}</SelectLabel>
-            <DropDownHeader onClick={handleToggle} dark={dark} size={smallSize}>
+            <SelectLabel size={smallSize ? 1 : 0}>{label}</SelectLabel>
+            <DropDownHeader onClick={handleToggle} dark={dark} size={smallSize ? 1 : 0}>
                 {selectedOption || ''}
             </DropDownHeader>
             {isOpen && (
                 <DropDownListContainer>
-                    <DropDownList dark={dark} size={smallSize}>
+                    <DropDownList dark={dark} size={smallSize ? 1 : 0}>
                         {options.map((option, index) => (
                             <ListItem onClick={onOptionClicked(option)} key={index}>
                                 {option}

@@ -21,15 +21,33 @@ export const DetailsContainer = styled.div`
     }
 `;
 
+export const ButtonWrapper = styled.div`
+    grid-column: 1 / 3 ;
+    grid-row: 1 ;
+    justify-self: start;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+`;
+
 export const ToggleWrappper = styled.div`
-    grid-column: 1 / 7 ;
+    grid-column: 3 / 7 ;
     grid-row: 1 ;
     justify-self: end;
-    align-self: flex-end;
+    align-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 20px;
+
+    @media screen and (max-width: 400px) {
+        grid-row: 2;
+        grid-column: 1 / 7 ;
+        justify-self: start;
+        margin-left: 20px;
+    }
 `;
 
 export const ToggleLabel = styled.div`
@@ -48,6 +66,10 @@ export const InfoBox = styled(Box)`
 
     @media screen and (max-width: 700px) {
         grid-column: 1 / 7;
+    }
+
+    @media screen and (max-width: 400px) {
+        grid-row: 3;
     }
 `;
 export const PriceBox = styled(Box)`
@@ -88,8 +110,6 @@ export const SelectWrap = styled(Box)`
 export const ChartBox = styled(Box)`
     grid-column: 1 / 7;
     z-index: 2;
-    /* max-height: 500px; */
-    /* width: 100%; */
 `;
 
 export const BoxWrapper = styled.div`

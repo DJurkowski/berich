@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Chart from 'react-apexcharts';
 import { initialState } from './chartInitialState';
+import { SpinnerWrapper } from './ChartElements';
+import Spinner from '../../../images/Spinner/spin.gif';
 
 const ApexChart = ({coinsmarket: { prices, loading }, coin}) => {
     
@@ -45,7 +47,9 @@ const ApexChart = ({coinsmarket: { prices, loading }, coin}) => {
     }, [loading])
     
     return (
-        state.series &&
+        loading ?
+        <SpinnerWrapper src={Spinner} alt="loading..." />
+        :state.series &&
         <Chart
         options={state.options}
         series={state.series}

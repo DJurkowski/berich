@@ -31,7 +31,7 @@ const CoinDetails = ({ getDetails, match, details: { details: coin, loading, err
         : ( coin &&
         <DetailsContainer dark={isDarkTheme}>
             <ButtonWrapper>
-                <Button to="/stock" primary={isDarkTheme ? true: false} dark={isDarkTheme ? true: false}>Back</Button>
+                <Button to="/stock" primary={isDarkTheme ? 1 : 0} dark={isDarkTheme ? 1 : 0}>Back</Button>
             </ButtonWrapper>
             <ToggleWrappper>
                 <ToggleLabel>{isDarkTheme ? 'Dark' : 'Light'} Mode</ToggleLabel>

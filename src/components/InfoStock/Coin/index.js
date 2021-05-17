@@ -7,7 +7,7 @@ const Coin = ({ coin }) => {
     return (
         <>
         <CoinContainer key={coin.id}>
-            <CoinIcon src={coin.image} />
+            <CoinIcon src={coin.image} alt={coin.id}/>
             <CoinName>{coin.name} <CoinShortName>{coin.symbol}</CoinShortName> </CoinName>
             
             <CoinPrice>${coin.current_price}</CoinPrice>
